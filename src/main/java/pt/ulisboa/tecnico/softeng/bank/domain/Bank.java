@@ -14,6 +14,9 @@ public class Bank extends Bank_Base {
 	public void delete() {
 		setRoot(null);
 
+		for (Account account : getAccountSet()) {
+			account.delete();
+		}
 		deleteDomainObject();
 	}
 
@@ -24,6 +27,31 @@ public class Bank extends Bank_Base {
 			}
 		}
 		return null;
+	}
+
+	public static Account getAccountByIBAN(String IBAN) {
+		for (Bank bank : FenixFramework.getDomainRoot().getBankSet()) {
+			for (Account account : bank.getAccountSet()) {
+				if (account.getIBAN().equals(IBAN)) {
+					return account;
+				}
+			}
+		}
+		return null;
+	}
+
+	public static int totalBalance() {
+
+		int total = 0;
+
+		for (Bank bank : FenixFramework.getDomainRoot().getBankSet()) {
+			for (Account account : bank.getAccountSet()) {
+				if (account.getBalance() > 0) {
+					total = total + account.getBalance();
+				}
+			}
+		}
+		return total;
 	}
 
 }

@@ -4,3 +4,6 @@ classpath
 .settings
 target
 src/main/resources/fenix-framework.properties
+
+.idea
+src/main/resources/
