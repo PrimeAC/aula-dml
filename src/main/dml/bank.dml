@@ -29,5 +29,5 @@ relation BankHasAccount {
     }
 }
 
-class
+class SavingsAccount extends Account;
 

@@ -40,9 +40,9 @@ public class BankPersistenceTest {
 	public void atomicAssert1() {
 		Bank bank = Bank.getBankByCode("BK01");
 
-		Account account1 = bank.getAccountByIBAN("12AB");
-		Account account2 = bank.getAccountByIBAN("34CD");
-		Account account3 = bank.getAccountByIBAN("56EF");
+		Account account1 = Bank.getAccountByIBAN("12AB");
+		Account account2 = Bank.getAccountByIBAN("34CD");
+		Account account3 = Bank.getAccountByIBAN("56EF");
 
 
 		assertEquals("Money", bank.getName());
@@ -73,9 +73,8 @@ public class BankPersistenceTest {
 
 	@Atomic(mode = TxMode.READ)
 	public void atomicAssert2() {
-		Bank bank = Bank.getBankByCode("BK01");
 
-		Account account3 = bank.getAccountByIBAN("56EF");
+		Account account3 = Bank.getAccountByIBAN("56EF");
 
 		assertEquals(0, account3.getBalance());
 	}
@@ -98,8 +97,7 @@ public class BankPersistenceTest {
 
 	@Atomic(mode = TxMode.READ)
 	public void atomicAssert3() {
-		Bank bank = Bank.getBankByCode("BK01");
-		Account account4 = bank.getAccountByIBAN("78GH");
+		Account account4 = Bank.getAccountByIBAN("78GH");
 
 		assertEquals(200, account4.getBalance());
 	}

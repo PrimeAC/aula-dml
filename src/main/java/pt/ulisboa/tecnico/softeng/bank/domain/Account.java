@@ -5,7 +5,17 @@ import pt.ist.fenixframework.FenixFramework;
 
 public class Account extends Account_Base {
 
+	public Account() {
+		super();
+	}
+
 	public Account(Bank bank, String IBAN) {
+		setBank(bank);
+		setIBAN(IBAN);
+		setBalance(0);
+	}
+
+	protected void init(Bank bank, String IBAN){
 		setBank(bank);
 		setIBAN(IBAN);
 		setBalance(0);
